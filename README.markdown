@@ -8,9 +8,13 @@ Lexiscrape only requires Scrapy and its dependencies to function.
 
 To install Scrapy, run ```pip install scrapy```.
 
+Then just ```git clone git://github.com/roderickhodgson/lexiscrape.git```
+
 ## Running Lexiscrape
 
 You can run lexiscrape as you would any other Scrapy project. The crawler name is lexi. The additional parameter -a url is required. 
+
+From within the root of the repository
 
 ```
 scrapy crawl lexi -a url=https://news.google.com -o google_news_tags.json -t json
