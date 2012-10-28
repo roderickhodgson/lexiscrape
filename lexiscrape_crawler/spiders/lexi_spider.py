@@ -19,7 +19,13 @@ class LexiSpider(BaseSpider):
         content_item = Content()
         hxs = HtmlXPathSelector(response)
         title = hxs.select('//html/head/title/text()')
-        body = hxs.select("//*[contains(@id, '')]/p/text()")
+        body = hxs.select("//*[starts-with(@id, 'content')]//p/text()")
+        if not body:
+            body = hxs.select("//*[contains(@id, 'content')]//p/text()")
+        if not body:
+            body = hxs.select("//body//p/text()")
+        if not body:
+            body = hxs.select("//body//*/text()")
 
         content_item['body_raw'] = body.extract()
         content_item['title'] = title.extract()[0]
